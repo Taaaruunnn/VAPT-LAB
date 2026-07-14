@@ -1,1 +1,119 @@
-<p>footer works!</p>
+<style>
+  .footer-wrap {
+    background: #080e1c;
+    font-family: 'Courier New', monospace;
+    padding: 20px 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  .top-bar span {
+    font-size: 11px;
+    color: rgba(120,160,255,0.55);
+    letter-spacing: 0.03em;
+  }
+  .flowers {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .card {
+    background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 30%, #1e3a8a 70%, #0f1f5c 100%);
+    border-radius: 18px;
+    padding: 56px 40px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.35) 1px, transparent 1px);
+    background-size: 6px 6px;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(to bottom, transparent, rgba(5,12,40,0.85));
+    pointer-events: none;
+  }
+  .links-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: rgba(220,230,255,0.75);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }
+  .link-item:hover { color: #fff; }
+  .link-item svg { width: 14px; height: 14px; opacity: 0.7; }
+  .big-name {
+    position: absolute;
+    bottom: -18px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: clamp(64px, 14vw, 140px);
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: rgba(5,15,50,0.85);
+    letter-spacing: -0.02em;
+    user-select: none;
+    z-index: 1;
+    white-space: nowrap;
+    line-height: 1;
+  }
+</style>
+
+<footer class="ml-72 bg-[#080e1c]">
+  <div class="top-bar">
+    <span>Made in Ottawa, Ontario</span>
+    <span>coming in, no plans to stop</span>
+  </div>
+
+  <!-- Swap your own flower SVGs here -->
+  <div class="flowers">
+    <!-- flower SVGs ... -->
+  </div>
+
+  <div class="card">
+    <div class="links-row">
+      <a class="link-item" href="https://linkedin.com/in/xxx">
+        <!-- LinkedIn icon SVG --> linkedin.com/in/xxx
+      </a>
+      <a class="link-item" href="https://github.com/xxx">
+        <!-- GitHub icon SVG --> github.com/xxx
+      </a>
+      <a class="link-item" href="https://x.com/xxx">
+        <!-- X icon SVG --> x.com/xxx
+      </a>
+      <a class="link-item" href="#top">↑ Back to top</a>
+    </div>
+
+    <div class="big-name">FIND IF U CAN</div>
+  </div>
+</footer>

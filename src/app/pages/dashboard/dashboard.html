@@ -1,1 +1,62 @@
-<p>dashboard works!</p>
+<div class="space-y-8">
+
+  <!-- Hero -->
+
+  <section
+    class="flex items-center justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-lg transition-colors dark:border-slate-800 dark:bg-slate-950">
+
+    <div>
+
+      <h1
+        class="text-4xl font-bold text-slate-900 dark:text-white">
+
+        Good Afternoon, Tarun 👋
+
+      </h1>
+
+      <p
+        class="mt-2 text-slate-600 dark:text-slate-400">
+
+        Welcome back to VAPT LAB Security Platform
+
+      </p>
+
+    </div>
+
+    <div class="flex gap-4">
+
+      <button
+        class="rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700">
+
+        New Scan
+
+      </button>
+
+      <button
+        class="rounded-xl border border-slate-300 bg-slate-100 px-6 py-3 text-slate-900 transition hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800">
+
+        Upload Report
+
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- Stat Cards -->
+
+  <section
+    class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-5">
+
+    @for(card of cards(); track card.id){
+
+      <app-stat-card
+        [title]="card.title"
+        [value]="card.value">
+      </app-stat-card>
+
+    }
+
+  </section>
+
+</div>

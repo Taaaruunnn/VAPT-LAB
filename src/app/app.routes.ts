@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-
+import { authGuard } from './core/guards/auth-guard';
 import { AuthLayout } from './layout/auth-layout/auth-layout';
 import { MainLayout } from './layout/main-layout/main-layout';
-
+import { StoredXss } from './pages/labs/stored-xss/stored-xss';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
-
+import { Labs } from './pages/labs/labs';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Profile } from './pages/profile/profile';
 import { Search } from './pages/search/search';
@@ -40,28 +40,49 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       {
-        path: 'dashboard',
-        component: Dashboard,
-      },
+        path:'dashboard',
+        component:Dashboard,
+        canActivate:[authGuard]
+    },
       {
-        path: 'profile',
-        component: Profile,
-      },
-      {
-        path: 'search',
-        component: Search,
-      },
-      {
-        path: 'upload',
-        component: Upload,
-      },
-      {
-        path: 'admin',
-        component: Admin,
-      },
+  path: 'recon',
+  component: Search,
+  canActivate: [authGuard],
+},
+{
+  path: 'targets',
+  component: Upload,
+  canActivate: [authGuard],
+},
+{
+  path: 'scans',
+  component: Admin,
+  canActivate: [authGuard],
+},
+{
+  path: 'reports',
+  component: Profile,
+  canActivate: [authGuard],
+},
+{
+  path: 'labs',
+  component: Labs,
+  canActivate: [authGuard],
+},
+{
+    path: 'labs/stored-xss',
+    component: StoredXss,
+    canActivate: [authGuard],
+},
+{
+  path: 'users',
+  component: Profile,
+  canActivate: [authGuard],
+},
       {
         path: 'settings',
         component: Settings,
+        canActivate: [authGuard],
       },
     ],
   },

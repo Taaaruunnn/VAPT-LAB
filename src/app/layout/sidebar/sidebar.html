@@ -1,1 +1,132 @@
-<p>sidebar works!</p>
+<aside
+  class="fixed left-0 top-[72px] bottom-0 flex w-72 flex-col border-r border-slate-200 bg-white transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950">
+
+  <!-- Navigation -->
+
+  <nav class="flex-1 space-y-2 px-4 py-6">
+
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="LayoutDashboard"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Dashboard
+
+    </a>
+
+    <a
+      routerLink="/recon"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="Radar"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Recon
+
+    </a>
+
+    <a
+      routerLink="/targets"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="Target"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Targets
+
+    </a>
+
+    <a
+      routerLink="/scans"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="ScanSearch"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Active Scans
+
+    </a>
+
+    <a
+      routerLink="/reports"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="FileText"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Reports
+
+    </a>
+
+    <a
+      routerLink="/labs"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="FlaskConical"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Vulnerability Labs
+
+    </a>
+
+    <a
+      routerLink="/users"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="Users"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      User Management
+
+    </a>
+
+    <a
+      routerLink="/settings"
+      routerLinkActive="bg-blue-600 text-white shadow-lg"
+      class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+
+      <lucide-icon
+        [img]="Settings"
+        class="h-5 w-5">
+      </lucide-icon>
+
+      Settings
+
+    </a>
+
+  </nav>
+
+  <!-- Footer -->
+
+  <div class="border-t border-slate-200 p-5 dark:border-slate-800">
+
+    <p class="text-xs text-slate-500 dark:text-slate-400">
+      Version 1.0.0
+    </p>
+
+  </div>
+
+</aside>
