@@ -25,7 +25,7 @@ export class Navbar {
 
   private router = inject(Router);
   private authApi = inject(AuthApiService);
-  private authService = inject(AuthService);
+  authService = inject(AuthService);
 
   themeService = inject(ThemeService);
 

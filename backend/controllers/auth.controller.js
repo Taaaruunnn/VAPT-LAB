@@ -5,6 +5,57 @@
 
 const User = require("../models/user.model");
 const failedAttempts = {};
+const register = async (req, res) => {
+
+    const {
+
+        name,
+
+        email,
+
+        password
+
+    } = req.body;
+
+    const existingUser = await User.findOne({
+
+        email
+
+    });
+
+    if (existingUser) {
+
+        return res.status(400).json({
+
+            success: false,
+
+            message: "Email already exists"
+
+        });
+
+    }
+
+    const user = await User.create({
+
+        name,
+
+        email,
+
+        password
+
+    });
+
+    res.status(201).json({
+
+        success: true,
+
+        message: "Registration Successful",
+
+        user
+
+    });
+
+};
 const login = async (req, res) => {
 
   const { email, password } = req.body;
@@ -41,11 +92,27 @@ if (!failedAttempts[email]) {
 failedAttempts[email] = 0;
   req.session.user = user;
 
-  res.json({
+  req.session.user = {
+
+    id: user._id,
+
+    name: user.name,
+
+    email: user.email,
+
+    role: user.role
+
+};
+
+res.json({
+
     success: true,
-    message: "Logged In",
-    user,
-  });
+
+    message: "Login Successful",
+
+    user: req.session.user
+
+});
 
 };
 // ======================================
@@ -84,10 +151,11 @@ const me = (req, res) => {
         user: req.session.user
 
     });
+    
 
 };
 
 
 module.exports = {
-  login,logout,me
+  login,logout,me,register
 };

@@ -1,6 +1,7 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { DashboardCard } from '../../core/models/dashboard-card';
 import { StatCard } from '../../shared/components/stat-card/stat-card';
+import { AuthService } from '../../core/services/auth';
 @Component({
   selector: 'app-dashboard',
   imports:[StatCard],
@@ -8,7 +9,7 @@ import { StatCard } from '../../shared/components/stat-card/stat-card';
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
-
+authService = inject(AuthService);
   cards = signal<DashboardCard[]>([
 
     {

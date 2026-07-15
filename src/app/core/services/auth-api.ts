@@ -46,5 +46,27 @@ export class AuthApiService {
   );
 
 }
+register(
+  name: string,
+  email: string,
+  password: string
+) {
 
+  return this.http.post(
+
+    `${this.api}/register`,
+
+    {
+      name,
+      email,
+      password
+    },
+
+    {
+      withCredentials: true
+    }
+
+  );
+
+}
 }

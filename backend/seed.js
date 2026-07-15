@@ -12,15 +12,19 @@ const seed = async () => {
 
   await User.create({
 
+    name: "Administrator",
+
     email: "admin@vaptlab.com",
 
     password: "admin123",
 
     role: "admin"
 
-  });
+});
 
-  await User.create({
+await User.create({
+
+    name: "Tarun Singh",
 
     email: "tarun@vaptlab.com",
 
@@ -28,7 +32,7 @@ const seed = async () => {
 
     role: "user"
 
-  });
+});
 
   console.log("Users Seeded");
 

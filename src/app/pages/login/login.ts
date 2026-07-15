@@ -58,9 +58,9 @@ this.loginForm.value.rememberMe ?? true;
 
 this.authApi.login(email, password).subscribe({
 
-  next: () => {
+  next: (response: any) => {
 
-  this.authService.isLoggedIn.set(true);
+  this.authService.login(response.user);
 
   if (rememberMe) {
 
