@@ -61,7 +61,7 @@ export const routes: Routes = [
 },
 {
   path: 'reports',
-  component: Profile,
+  component: Admin,
   canActivate: [authGuard],
 },
 {
@@ -75,7 +75,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
 },
 {
-  path: 'users',
+  path: 'labs/profile/:id',
   component: Profile,
   canActivate: [authGuard],
 },

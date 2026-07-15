@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import { AuthService } from '../../core/services/auth';
 import {
   LucideAngularModule,
   LayoutDashboard,
@@ -23,6 +23,7 @@ import {
   templateUrl: './sidebar.html'
 })
 export class Sidebar {
+  authService = inject(AuthService);
   readonly LayoutDashboard = LayoutDashboard;
   readonly Radar = Radar;
   readonly Target = Target;

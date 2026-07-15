@@ -1,5 +1,8 @@
-import { Component,signal } from '@angular/core';
+import { Component,inject,signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../core/services/auth';
+
+
 @Component({
   selector: 'app-labs',
   imports: [RouterLink],
@@ -7,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './labs.css',
 })
 export class Labs {
+  authService = inject(AuthService);
   authOpen = signal(true);
 
 webOpen = signal(true);
