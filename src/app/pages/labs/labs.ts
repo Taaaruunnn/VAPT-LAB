@@ -49,4 +49,15 @@ toggle(section: string) {
   }
 
 }
+launchAttack() {
+
+    window.open(
+
+        'http://localhost:8080/attack.html',
+
+        '_blank'
+
+    );
+
+}
 }
