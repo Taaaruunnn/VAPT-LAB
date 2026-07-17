@@ -9,7 +9,7 @@ import { Labs } from './pages/labs/labs';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Profile } from './pages/profile/profile';
 import { Search } from './pages/search/search';
-import { Upload } from './pages/upload/upload';
+import { Reports} from './pages/report/report';
 import { Admin } from './pages/admin/admin';
 import { Settings } from './pages/settings/settings';
 
@@ -51,7 +51,7 @@ export const routes: Routes = [
 },
 {
   path: 'targets',
-  component: Upload,
+  component: Search,
   canActivate: [authGuard],
 },
 {
@@ -61,7 +61,7 @@ export const routes: Routes = [
 },
 {
   path: 'reports',
-  component: Admin,
+  component: Reports,
   canActivate: [authGuard],
 },
 {

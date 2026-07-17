@@ -1,0 +1,117 @@
+<div class="p-8">
+
+    <div class="mb-8">
+
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
+
+            Evidence Upload
+
+        </h1>
+
+        <p class="mt-2 text-slate-600 dark:text-slate-400">
+
+            Upload penetration testing reports, screenshots, logs, PCAPs and other evidence.
+
+        </p>
+
+    </div>
+    <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 shadow">
+
+    <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-4">
+
+        Upload Evidence
+
+    </h2>
+
+    <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="block w-full rounded-lg border border-slate-300 dark:border-slate-700
+               bg-white dark:bg-slate-800
+               text-slate-900 dark:text-white
+               p-2"
+    >
+
+    <button
+
+        (click)="uploadFile()"
+
+        class="mt-4 rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700 transition"
+
+    >
+
+        Upload File
+
+    </button>
+
+</div>
+<div class="mt-10">
+
+    <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">
+
+        Uploaded Evidence
+
+    </h2>
+    <div
+    *ngIf="uploads.length === 0"
+    class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-8 text-center text-slate-500 dark:text-slate-400">
+
+    No evidence uploaded yet.
+
+</div>
+<div
+    *ngFor="let file of uploads"
+    class="mb-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 shadow">
+
+    <h3 class="font-semibold text-slate-900 dark:text-white">
+
+        {{ file.originalName }}
+
+    </h3>
+
+    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+
+        Uploaded By: {{ file.uploadedBy }}
+
+    </p>
+
+    <p class="text-sm text-slate-600 dark:text-slate-400">
+
+        Size: {{ file.size }} bytes
+
+    </p>
+
+    <div class="mt-4 flex gap-3">
+
+        <a
+
+            [href]="'http://localhost:5000/' + file.path"
+
+            target="_blank"
+
+            class="rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition"
+
+        >
+
+            View
+
+        </a>
+
+        <button
+
+            (click)="deleteFile(file._id)"
+
+            class="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition"
+
+        >
+
+            Delete
+
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+</div>
