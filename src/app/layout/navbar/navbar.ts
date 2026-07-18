@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostListener, inject, output, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { AuthApiService } from '../../core/services/auth-api';
@@ -73,6 +73,8 @@ export class Navbar {
     });
 
   }
+   sidebarToggle = output<void>();
+
 
   @HostListener('document:click')
   onDocumentClick() {

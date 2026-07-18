@@ -1,12 +1,21 @@
-<app-navbar></app-navbar>
+<app-navbar
+  (sidebarToggle)="toggleSidebar()">
+</app-navbar>
 
-<app-sidebar></app-sidebar>
+<app-sidebar
+  [class.-translate-x-full]="!sidebarOpen()"
+  class="fixed left-0 top-[72px] h-[calc(100vh-72px)] w-72 transition-transform duration-300">
+</app-sidebar>
+<div
+  class="mt-[72px] min-h-screen flex flex-col transition-all duration-300"
+  [class.ml-72]="sidebarOpen()"
+  [class.ml-0]="!sidebarOpen()">
 
-<main
-  class="ml-72 mt-[72px] min-h-screen bg-slate-100 p-8 transition-colors duration-300 dark:bg-slate-900">
+  <main class="flex-1 bg-slate-100 p-8 dark:bg-slate-900">
+    <router-outlet></router-outlet>
+  </main>
 
-  <router-outlet></router-outlet>
+  <app-footer></app-footer>
 
-</main>
+</div>
 
-<app-footer></app-footer>

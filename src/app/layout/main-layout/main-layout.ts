@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { Navbar } from '../navbar/navbar';
@@ -16,4 +16,10 @@ import { Footer } from '../footer/footer';
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css'
 })
-export class MainLayout {}
+export class MainLayout {
+  sidebarOpen = signal(true);
+
+toggleSidebar() {
+  this.sidebarOpen.update(value => !value);
+}
+}
