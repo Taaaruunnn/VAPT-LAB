@@ -1,88 +1,264 @@
-<div class="max-w-5xl mx-auto p-6">
+<div class="max-w-5xl mx-auto p-6 space-y-6">
 
-    <h1 class="text-3xl font-bold mb-6">
-        SSRF Lab
-    </h1>
+  <!-- Hero -->
+  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm p-6">
+
+    <div class="flex items-center gap-3">
+
+      <lucide-angular
+        [img]="ShieldAlert"
+        class="w-8 h-8 text-red-500">
+      </lucide-angular>
+
+      <div>
+
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
+          SSRF Lab
+        </h1>
+
+        <p class="text-slate-600 dark:text-slate-400 mt-1">
+          Learn how attackers can trick a server into making requests on their behalf.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Example URLs -->
+  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm p-6">
+
+    <h2 class="font-semibold text-slate-900 dark:text-white mb-4">
+      Example Targets
+    </h2>
+
+    <div class="flex flex-wrap gap-3">
+
+      <button
+        (click)="url.set('https://jsonplaceholder.typicode.com/posts/1')"
+        class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
+
+        <lucide-angular
+          [img]="Globe"
+          class="w-4 h-4">
+        </lucide-angular>
+
+        External API
+
+      </button>
+
+      <button
+        (click)="url.set('http://localhost:5000/api/internal/secret')"
+        class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition">
+
+        <lucide-angular
+          [img]="Server"
+          class="w-4 h-4">
+        </lucide-angular>
+
+        Internal API
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Input -->
+  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm p-6">
+
+    <label class="flex items-center gap-2 font-medium mb-3 text-slate-900 dark:text-white">
+
+      <lucide-angular
+        [img]="Link"
+        class="w-5 h-5 text-blue-500">
+      </lucide-angular>
+
+      Target URL
+
+    </label>
 
     <input
-        class="w-full border rounded-lg p-3"
-        [(ngModel)]="url"
-        placeholder="https://example.com">
+
+      [value]="url()"
+
+      (input)="url.set($any($event.target).value)"
+
+      placeholder="https://example.com"
+
+      class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500">
 
     <button
-        class="bg-blue-600 text-white px-6 py-3 rounded-lg mt-4"
-        (click)="fetchURL()">
+
+      (click)="fetchURL()"
+
+      [disabled]="loading()"
+
+      class="mt-5 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-500 text-white px-5 py-3 rounded-lg transition">
+
+      <lucide-angular
+        [img]="ArrowRight"
+        class="w-4 h-4">
+      </lucide-angular>
+
+      @if(loading()){
+
+        Fetching...
+
+      }
+
+      @else{
 
         Fetch URL
 
+      }
+
     </button>
 
-    @if(loading()){
+  </div>
 
-        <p class="mt-4">
-            Loading...
-        </p>
+  <!-- Error -->
+  @if(error()){
 
-    }
+    <div class="border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950 rounded-xl p-5">
 
-    @if(error()){
+      <div class="flex items-start gap-3">
 
-        <div class="bg-red-100 text-red-700 p-4 mt-4 rounded">
+        <lucide-angular
+          [img]="CircleAlert"
+          class="w-6 h-6 text-red-500">
+        </lucide-angular>
 
-            {{error()}}
+        <div>
 
-        </div>
+          <h3 class="font-semibold text-red-600">
+            Request Failed
+          </h3>
 
-    }
-
-    @if(result()){
-
-        <div class="mt-8">
-
-            <h2 class="text-xl font-bold">
-                Status
-            </h2>
-
-            <p>
-
-                {{result().status}}
-
-                {{result().statusText}}
-
-            </p>
-
-            <h2 class="text-xl font-bold mt-6">
-                Response Time
-            </h2>
-
-            <p>
-
-                {{result().responseTime}}
-
-            </p>
-
-            <h2 class="text-xl font-bold mt-6">
-                Headers
-            </h2>
-
-            <pre>
-
-{{result().headers | json}}
-
-            </pre>
-
-            <h2 class="text-xl font-bold mt-6">
-                Response Body
-            </h2>
-
-            <pre>
-
-{{result().data | json}}
-
-            </pre>
+          <p class="text-red-500 mt-1">
+            {{ error() }}
+          </p>
 
         </div>
 
-    }
+      </div>
+
+    </div>
+
+  }
+
+  <!-- Result -->
+  @if(result()){
+
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm p-6 space-y-6">
+
+      <div class="flex gap-10">
+
+        <div>
+
+          <div class="flex items-center gap-2 text-slate-500">
+
+            <lucide-angular
+              [img]="BadgeCheck"
+              class="w-5 h-5 text-green-500">
+            </lucide-angular>
+
+            Status
+
+          </div>
+
+          <p class="font-semibold text-green-600 mt-1">
+
+            {{ result().status }}
+
+            {{ result().statusText }}
+
+          </p>
+
+        </div>
+
+        <div>
+
+          <div class="flex items-center gap-2 text-slate-500">
+
+            <lucide-angular
+              [img]="Clock3"
+              class="w-5 h-5 text-blue-500">
+            </lucide-angular>
+
+            Response Time
+
+          </div>
+
+          <p class="font-semibold mt-1">
+
+            {{ result().responseTime }}
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <hr class="border-slate-200 dark:border-slate-700">
+
+      <div>
+
+        <h2 class="flex items-center gap-2 font-semibold text-lg mb-4">
+
+          <lucide-angular
+            [img]="FileJson"
+            class="w-5 h-5 text-purple-500">
+          </lucide-angular>
+
+          Response Body
+
+        </h2>
+
+        <pre class="bg-slate-950 rounded-lg p-5 text-green-400 overflow-auto text-sm font-mono">{{ result().data | json }}</pre>
+
+      </div>
+
+    </div>
+
+  }
+
+  <!-- Educational Box -->
+  <div class="bg-amber-50 dark:bg-amber-950 border border-amber-300 dark:border-amber-900 rounded-xl p-6">
+
+    <h2 class="flex items-center gap-2 text-lg font-semibold text-amber-700 dark:text-amber-300 mb-4">
+
+      <lucide-angular
+        [img]="Lightbulb"
+        class="w-5 h-5">
+      </lucide-angular>
+
+      What Happened?
+
+    </h2>
+
+    <p class="text-slate-700 dark:text-slate-300 leading-7">
+
+      The URL you entered was <strong>not requested by your browser</strong>.
+      Instead, the Express server used <strong>axios.get()</strong> to fetch the URL and then returned the response back to you.
+
+    </p>
+
+    <p class="mt-4 text-slate-700 dark:text-slate-300">
+
+      If an attacker supplies an internal URL such as:
+
+    </p>
+
+    <pre class="mt-3 bg-slate-900 text-red-400 rounded-lg p-3 overflow-auto text-sm">http://localhost:5000/api/internal/secret</pre>
+
+    <p class="mt-4 text-slate-700 dark:text-slate-300">
+
+      the server may expose internal resources that should never be publicly accessible. This vulnerability is known as <strong>Server-Side Request Forgery (SSRF)</strong>.
+
+    </p>
+
+  </div>
 
 </div>
