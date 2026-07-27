@@ -53,6 +53,16 @@
   Passwords do not match.
 </p>
 
+
+}
+@if (
+  registerForm.get('password')?.hasError('minlength') &&
+  registerForm.get('password')?.touched
+) {
+
+<p class="mt-2 text-sm text-red-500">
+  Passwords should be of 8 charachters minimum.
+</p>
 }
     <!-- Terms -->
 

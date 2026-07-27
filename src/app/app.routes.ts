@@ -10,6 +10,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Profile } from './pages/profile/profile';
 import { Search } from './pages/search/search';
 import { Reports} from './pages/report/report';
+import { Ssrf } from './pages/ssrf/ssrf';
 import { Admin } from './pages/admin/admin';
 import { Settings } from './pages/settings/settings';
 
@@ -55,8 +56,8 @@ export const routes: Routes = [
   canActivate: [authGuard],
 },
 {
-  path: 'scans',
-  component: Admin,
+  path: 'ssrf',
+  component: Ssrf,
   canActivate: [authGuard],
 },
 {

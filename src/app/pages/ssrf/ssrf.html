@@ -1,0 +1,88 @@
+<div class="max-w-5xl mx-auto p-6">
+
+    <h1 class="text-3xl font-bold mb-6">
+        SSRF Lab
+    </h1>
+
+    <input
+        class="w-full border rounded-lg p-3"
+        [(ngModel)]="url"
+        placeholder="https://example.com">
+
+    <button
+        class="bg-blue-600 text-white px-6 py-3 rounded-lg mt-4"
+        (click)="fetchURL()">
+
+        Fetch URL
+
+    </button>
+
+    @if(loading()){
+
+        <p class="mt-4">
+            Loading...
+        </p>
+
+    }
+
+    @if(error()){
+
+        <div class="bg-red-100 text-red-700 p-4 mt-4 rounded">
+
+            {{error()}}
+
+        </div>
+
+    }
+
+    @if(result()){
+
+        <div class="mt-8">
+
+            <h2 class="text-xl font-bold">
+                Status
+            </h2>
+
+            <p>
+
+                {{result().status}}
+
+                {{result().statusText}}
+
+            </p>
+
+            <h2 class="text-xl font-bold mt-6">
+                Response Time
+            </h2>
+
+            <p>
+
+                {{result().responseTime}}
+
+            </p>
+
+            <h2 class="text-xl font-bold mt-6">
+                Headers
+            </h2>
+
+            <pre>
+
+{{result().headers | json}}
+
+            </pre>
+
+            <h2 class="text-xl font-bold mt-6">
+                Response Body
+            </h2>
+
+            <pre>
+
+{{result().data | json}}
+
+            </pre>
+
+        </div>
+
+    }
+
+</div>

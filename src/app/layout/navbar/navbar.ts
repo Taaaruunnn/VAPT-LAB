@@ -80,9 +80,10 @@ export class Navbar {
   onDocumentClick() {
 
     this.closeDropdown();
-
+    this.toggleDropdown();
     this.notificationsOpen.set(false);
-
+    this.dropdownOpen.set(false);
+    
   }
 
 }
