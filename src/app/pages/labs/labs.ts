@@ -1,4 +1,4 @@
-import { Component,inject,signal } from '@angular/core';
+import { Component,HostListener,inject,signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth';
 
@@ -10,6 +10,7 @@ import { AuthService } from '../../core/services/auth';
   styleUrl: './labs.css',
 })
 export class Labs {
+  popupOpen = signal(false);
   authService = inject(AuthService);
   authOpen = signal(true);
 
@@ -18,6 +19,16 @@ webOpen = signal(true);
 serverOpen = signal(false);
 
 apiOpen = signal(false);
+openPopup() {
+  this.popupOpen.set(true);
+}
+closePopup() {
+  this.popupOpen.set(false);
+}
+@HostListener('document:click')
+onDocumentClick() {
+  this.closePopup();
+}
 toggle(section: string) {
 
   switch (section) {

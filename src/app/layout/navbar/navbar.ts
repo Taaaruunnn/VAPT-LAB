@@ -1,6 +1,6 @@
 import { Component, HostListener, inject, output, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-
+import { ReflectedService } from '../../core/services/reflected.service';
 import { AuthApiService } from '../../core/services/auth-api';
 import { AuthService } from '../../core/services/auth';
 import { ThemeService } from '../../core/services/theme';
@@ -22,7 +22,7 @@ import {
   templateUrl: './navbar.html',
 })
 export class Navbar {
-
+  private reflectedService = inject(ReflectedService);
   private router = inject(Router);
   private authApi = inject(AuthApiService);
   authService = inject(AuthService);
@@ -31,6 +31,9 @@ export class Navbar {
 
   dropdownOpen = signal(false);
   notificationsOpen = signal(false);
+  searchQuery = signal('');
+
+  searchResult = signal('');
 
   readonly Shield = Shield;
   readonly Search = Search;
@@ -39,6 +42,25 @@ export class Navbar {
   readonly Bell = Bell;
   readonly User = User;
   readonly ChevronDown = ChevronDown;
+  search() {
+
+  this.reflectedService.search(this.searchQuery()).subscribe({
+
+    next: (response: any) => {
+
+      this.searchResult.set(response.query);
+
+    },
+
+    error: () => {
+
+      this.searchResult.set('Search failed.');
+
+    }
+
+  });
+
+}
 
   toggleDropdown() {
     this.dropdownOpen.update(value => !value);

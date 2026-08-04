@@ -169,21 +169,22 @@
         </a>
 
         <div
-          class="flex items-center justify-between px-6 py-4">
+           (click)="openPopup(); $event.stopPropagation()"
+           class="flex cursor-pointer items-center justify-between px-6 py-4 transition hover:bg-slate-100 dark:hover:bg-slate-800">
 
-          <span class="text-slate-500">
+            <span class="text-slate-900 dark:text-slate-200">
 
-            Reflected XSS
+              Reflected XSS
 
-          </span>
+            </span>
 
-          <span class="text-slate-500">
+            <span class="font-medium text-green-600 dark:text-green-400">
 
-             Coming Soon
+             Open →
 
-          </span>
+            </span>
 
-        </div>
+         </div>
         <div
           class="flex items-center justify-between px-6 py-4">
 
@@ -268,22 +269,7 @@
 
       <div class="border-t border-slate-200 dark:border-slate-800">
 
-        <div
-          class="flex items-center justify-between px-6 py-4">
-
-          <span class="text-slate-500">
-
-            Command Injection
-
-          </span>
-
-          <span class="text-slate-500">
-
-             Coming Soon
-
-          </span>
-
-        </div>
+        
 
         <div class="flex items-center justify-between px-6 py-4">
 
@@ -310,3 +296,79 @@
   </section>
 
 </div>
+@if (popupOpen()) {
+
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+
+  <div
+    (click)="$event.stopPropagation()"
+    class="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-2xl dark:bg-slate-900">
+
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+
+      Reflected XSS Lab
+
+    </h2>
+
+    <p class="mt-4 text-slate-600 dark:text-slate-300">
+
+      This lab demonstrates <strong>Reflected Cross-Site Scripting (XSS)</strong>.
+
+      The application's search bar reflects user input back into the page.
+
+    </p>
+
+    <div class="mt-6">
+
+      <h3 class="font-semibold text-slate-900 dark:text-white">
+
+        Instructions
+
+      </h3>
+
+      <ol class="mt-3 list-decimal space-y-2 pl-5 text-slate-700 dark:text-slate-300">
+
+        <li>Copy the payload below.</li>
+
+        <li>Go to the search bar in the navigation bar.</li>
+
+        <li>Paste the payload.</li>
+
+        <li>Press Enter.</li>
+
+        <li>Observe the reflected XSS.</li>
+        <li>Refresh the page to get back to normal search.</li>
+
+      </ol>
+
+    </div>
+
+    <div class="mt-6">
+
+      <h3 class="font-semibold text-slate-900 dark:text-white">
+
+        Payload
+
+      </h3>
+
+      <pre
+class="mt-3 overflow-auto rounded-xl bg-slate-950 p-4 text-green-400">&lt;img src=x onerror=alert('Reflected XSS')&gt;</pre>
+
+    </div>
+
+    <div class="mt-6 rounded-xl border border-yellow-500 bg-yellow-50 p-4 dark:bg-yellow-950">
+
+      <p class="text-sm text-yellow-800 dark:text-yellow-300">
+
+        ⚠️ Click anywhere outside this popup to close it.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+}

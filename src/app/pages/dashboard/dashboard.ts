@@ -15,7 +15,7 @@ authService = inject(AuthService);
     {
       id: 1,
       title: 'LABS',
-      value: 5,
+      value: 8,
     },
     
 

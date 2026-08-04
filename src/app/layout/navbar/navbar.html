@@ -36,11 +36,31 @@
   </lucide-icon>
 
   <input
-    type="text"
-    placeholder="Search vulnerabilities, users, reports..."
-class="w-full rounded-2xl border border-slate-300 bg-slate-100 py-3 pl-14 pr-4 text-sm text-slate-900 placeholder:text-slate-500 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-400"/>
+  type="text"
+  [value]="searchQuery()"
+  (input)="searchQuery.set($any($event.target).value)"
+  (keyup.enter)="search()"
+  placeholder="Search vulnerabilities, users, reports..."
+  class="w-full rounded-2xl border border-slate-300 bg-slate-100 py-3 pl-14 pr-4 text-sm text-slate-900 placeholder:text-slate-500 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-400"/></div>
+  @if(searchResult()){
+
+<div
+class="absolute left-0 right-0 mt-2 rounded-xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-700 dark:bg-slate-900">
+
+    <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+
+        Search Result
+
+    </p>
+
+    <div
+        class="text-slate-900 dark:text-white"
+        [innerHTML]="searchResult()">
+    </div>
+
 </div>
 
+}
     <!-- Right -->
 
     <div class="flex items-center gap-3">
