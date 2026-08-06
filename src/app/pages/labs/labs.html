@@ -44,11 +44,23 @@
 
       </div>
 
-      <span class="text-2xl text-slate-900 dark:text-white">
+      <div class="flex items-center gap-4">
 
-        {{ authOpen() ? '−' : '+' }}
+  <button
+    (click)="openWalkthrough(weakLoginGuide); $event.stopPropagation()"
+    class="rounded-lg border border-slate-500 px-3 py-1 text-sm font-medium text-slate-600 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800">
 
-      </span>
+    Walkthrough
+
+  </button>
+
+  <span class="text-2xl text-slate-900 dark:text-white">
+
+    {{ authOpen() ? '−' : '+' }}
+
+  </span>
+
+</div>
 
     </button>
 
@@ -93,7 +105,7 @@
         <div
           class="flex items-center justify-between px-6 py-4">
 
-          <span class="text-slate-500 dark:text-slate-500">
+          <span class="text-slate-900 dark:text-slate-200">
 
             Session Fixation
 
@@ -138,11 +150,22 @@
 
       </div>
 
-      <span class="text-2xl text-slate-900 dark:text-white">
+      <div class="flex items-center gap-4">
 
-        {{ webOpen() ? '−' : '+' }}
+  <button
+    (click)="openWalkthrough(reflectedGuide); $event.stopPropagation()"
+class="rounded-lg border border-slate-500 px-3 py-1 text-sm font-medium text-slate-600 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800">
+    Walkthrough
 
-      </span>
+  </button>
+
+  <span class="text-2xl text-slate-900 dark:text-white">
+
+    {{ authOpen() ? '−' : '+' }}
+
+  </span>
+
+</div>
 
     </button>
 
@@ -257,11 +280,22 @@
 
       </div>
 
-      <span class="text-2xl text-slate-900 dark:text-white">
+      <div class="flex items-center gap-4">
 
-        {{ serverOpen() ? '−' : '+' }}
+  <button
+    (click)="openWalkthrough(ssrfGuide); $event.stopPropagation()"
+class="rounded-lg border border-slate-500 px-3 py-1 text-sm font-medium text-slate-600 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800">
+    Walkthrough
 
-      </span>
+  </button>
+
+  <span class="text-2xl text-slate-900 dark:text-white">
+
+    {{ authOpen() ? '−' : '+' }}
+
+  </span>
+
+</div>
 
     </button>
 
@@ -361,13 +395,88 @@ class="mt-3 overflow-auto rounded-xl bg-slate-950 p-4 text-green-400">&lt;img sr
 
       <p class="text-sm text-yellow-800 dark:text-yellow-300">
 
-        ⚠️ Click anywhere outside this popup to close it.
+        Click anywhere outside this popup to close it.
 
       </p>
 
     </div>
 
   </div>
+
+</div>
+
+}
+@if(walkthrough()){
+
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+
+<div
+
+(click)="$event.stopPropagation()"
+
+class="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-2xl dark:bg-slate-900">
+
+<h2>
+
+{{ walkthrough()?.title }}
+
+</h2>
+
+<p>
+
+{{ walkthrough()?.description }}
+
+</p>
+
+<h3>
+
+Objective
+
+</h3>
+
+<p>
+
+{{ walkthrough()?.objective }}
+
+</p>
+
+@if(walkthrough()?.payload){
+
+<h3>
+
+Payload
+
+</h3>
+
+<pre>
+
+{{ walkthrough()?.payload }}
+
+</pre>
+
+}
+
+<h3>
+
+Instructions
+
+</h3>
+
+<ol>
+
+@for(step of walkthrough()?.steps ?? []; track step){
+
+<li>
+
+{{ step }}
+
+</li>
+
+}
+
+</ol>
+
+</div>
 
 </div>
 

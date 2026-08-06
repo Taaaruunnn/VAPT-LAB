@@ -15,31 +15,18 @@ authService = inject(AuthService);
     {
       id: 1,
       title: 'LABS',
-      value: 8,
-    },
-    
-
-    {
-      id: 2,
-      title: 'Scans',
-      value: 10,
-    },
-
-    {
-      id: 3,
-      title: 'Alerts',
-      value: 7,
+      value: 6,
     },
 
     {
       id: 4,
       title: 'Sessions',
-      value: 2,
+      value: 1,
     },
     {
       id: 5,
       title: 'Vulnerabilities',
-      value: 12,
+      value: 8,
     },
 
   ]);
